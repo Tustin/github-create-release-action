@@ -12,7 +12,7 @@ set -o pipefail
 # ============================================
 request_create_release(){
 
-	local json_body= '{
+	local json_body='{
 	  "tag_name": "@tag_name@",
 	  "target_commitish": "@branch@",
 	  "name": "@release_name@",
@@ -23,7 +23,7 @@ request_create_release(){
 
 	json_body=$(echo "$json_body" | sed "s/@tag_name@/$git_tag/")
 	json_body=$(echo "$json_body" | sed "s/@branch@/master/")
-	json_body=$(echo "$json_body" | sed "s/@release_name@/Release $git_tag/")
+	json_body=$(echo "$json_body" | sed "s/@release_name@/Version $git_tag/")
 	json_body=$(echo "$json_body" | sed "s/@description@/$DESCRIPTION/")
 
 	curl --request POST \
